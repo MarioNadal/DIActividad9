@@ -9,7 +9,7 @@ function EventItem({ event, isInCart, onAddToCart, onRemoveFromCart }) {
     buttonAction = onRemoveFromCart;
   }
 
-  return (
+  return(
     <li className={classes.event}>
       <img src={event.image} alt={event.title} />
       <div className={classes.content}>

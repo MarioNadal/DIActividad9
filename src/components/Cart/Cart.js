@@ -24,7 +24,7 @@ function Cart({ onClose, items }) {
         </div>
       </aside>
     </>,
-    document.getElementById('modal')
+    document.getElementById("modal")
   );
 }
 
