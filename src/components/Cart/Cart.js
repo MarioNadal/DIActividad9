@@ -1,17 +1,20 @@
 import ReactDOM from 'react-dom';
 
 import classes from './Cart.module.css';
+import { useContext } from 'react';
+import CartItemContext from '../context';
 
-function Cart({ onClose, items }) {
-  const total = items.reduce((prevVal, item) => prevVal + item.price, 0)
+function Cart() {
+  const datosCart = useContext(CartItemContext)
+  const total = datosCart.datosItem.cartItem.reduce((prevVal, item) => prevVal + item.price, 0)
 
   return ReactDOM.createPortal(
     <>
-      <div className={classes.backdrop} onClick={onClose} />
+      <div className={classes.backdrop} onClick={datosCart.closeCartModalHandler} />
       <aside className={classes.cart}>
         <h2>Your Cart</h2>
         <ul>
-          {items.map((item) => (
+          {datosCart.datosItem.cartItem.map((item) => (
             <li key={item.id}>
               {item.title} (${item.price})
             </li>
@@ -19,8 +22,8 @@ function Cart({ onClose, items }) {
         </ul>
         <p className={classes.total}>Total: ${total}</p>
         <div className={classes.actions}>
-          <button onClick={onClose}>Close</button>
-          <button onClick={onClose}>Buy</button>
+          <button onClick={datosCart.closeCartModalHandler}>Close</button>
+          <button onClick={datosCart.closeCartModalHandler}>Buy</button>
         </div>
       </aside>
     </>,

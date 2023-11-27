@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Events from './components/Events/Events';
 import MainHeader from './components/MainHeader/MainHeader';
-import CartItemContext from './components/store/cartItem-context';
+import CartItemContext from './components/context';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -23,19 +23,9 @@ function App() {
 
   return (
     <CartItemContext.Provider value={cartItemCtxValue}>
-      <Events />
       <MainHeader />
+      <Events />
     </CartItemContext.Provider>
-    // <>
-    //   <MainHeader cartItems={cartItems} />
-    //   <main>
-    //     <Events
-    //       onAddItemToCart={addItemHandler}
-    //       onRemoveItemFromCart={removeItemHandler}
-    //       cartItems={cartItems}
-    //     />
-    //   </main>
-    // </>
   );
 }
 
